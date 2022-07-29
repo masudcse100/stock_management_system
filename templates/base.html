@@ -18,9 +18,9 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary" style="background-color: #e3f2fd;">
       {% if request.user.is_authenticated %}
-      <a class="navbar-brand" href="{% url 'smsApps:index' %}">Stock Management System</a>
+      <a class="navbar-brand" href="{% url 'index' %}">Stock Management System</a>
       {% else %}
-      <a class="navbar-brand" style="color:white;">Stock Management System</a>
+      <a class="navbar-brand" style="color:white;" href="{% url 'home' %}">Stock Management System</a>
       {% endif %}
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -29,11 +29,11 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         {% if request.user.is_authenticated %}
         <ul class="navbar-nav mr-auto offset-lg-3 offset-sm-1">
-          <li class="nav-item" style="color:#white;"><a class="nav-link" href="{% url 'smsApps:categorey' %}">Categorey</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'smsApps:categorey' %}">Product</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'smsApps:categorey' %}">Order</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'smsApps:categorey' %}">Invoice</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'smsApps:categorey' %}">Link</a></li>
+          <li class="nav-item" style="color:#white;"><a class="nav-link" href="{% url 'categorey' %}">Categorey</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'categorey' %}">Product</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'categorey' %}">Order</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'categorey' %}">Invoice</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'categorey' %}">Link</a></li>
         </ul>
         {% endif %}
         <ul class="navbar-nav" >
@@ -46,13 +46,13 @@
               <a class="dropdown-item" href="#">Profile</a>
               <a class="dropdown-item" href="#">My View</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{% url 'reglog:logout' %}">Logout</a>
+              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
             </div>
           </li>
           <li class="nav-item"><a class="nav-link" href="">OverView</a></li>
           {% else %}
-          <li class="nav-item"><a class="nav-link" href="{% url 'reglog:signup' %}">Signup</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'reglog:login' %}">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
           {% endif %}
         </ul>
       </div>
