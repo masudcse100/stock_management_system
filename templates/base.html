@@ -39,7 +39,7 @@
           {% if request.user.is_authenticated %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              @Dropdown
+              @{{user.username}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-top:7px;">
               <a class="dropdown-item" href="#">Profile</a>
@@ -48,7 +48,7 @@
               <a class="dropdown-item" href="{% url 'reglog:logout' %}">Logout</a>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="">Admin</a></li>
+          <li class="nav-item"><a class="nav-link" href="">OverView</a></li>
           {% else %}
           <li class="nav-item"><a class="nav-link" href="{% url 'reglog:signup' %}">Signup</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'reglog:login' %}">Login</a></li>
