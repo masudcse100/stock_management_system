@@ -1,13 +1,14 @@
-from django.urls import reverse
-from django.shortcuts import HttpResponseRedirect, render
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import  render
+from django.contrib.auth import authenticate
+
+def home(request):
+    if request.user.is_authenticated:
+        return render(request, 'home.html')
+    else:
+        return render(request, 'smsApps/dashboad.html')
 
 
-def index(request):
-    return HttpResponseRedirect(reverse('smsApps:index'))
 
-def logout_view(request):
-    return HttpResponseRedirect(reverse('reglog:login'))
 
 # def home(request):
 #     return HttpResponseRedirect(reverse('smsApps:index'))

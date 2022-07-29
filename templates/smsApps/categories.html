@@ -18,12 +18,12 @@ sms | Categorey
 </div>
 
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <div class="card card-default rounded-0 shadow ">
+    <div class="card card-default rounded-0 shadowcss ">
         <div class="card-header">
             <div class="d-flex w-100 align-items-center justify-content-between">
                 <h4 class="card-title fw-bold">Product Categories</h4>
                 <div class="tools">
-                    <button type="button" class="btn btn-primary rounded-0 bg-gradient btn-sm" id='add_new' data-toggle="modal" data-target="#exampleModal" data-whatever="@fat"><i class="fa fa-plus"></i><a style="color:white; text-decoration:none;" href="{% url 'smsApps:addcategorey' %}">Add New</a></button>
+                    <button type="button" class="btn btn-primary rounded-0 bg-gradient btn-sm" id='add_new' data-toggle="modal" data-target="#exampleModal" data-whatever="@fat"><i class="fa fa-plus"></i><a style="color:white; text-decoration:none;" href="{% url 'addcategorey' %}">Add New</a></button>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@ sms | Categorey
                     <thead>
                         <tr class="bg-gradient bg-primary bg-opacity-50 text-light">
                             <th class="px-2 py-2 text-center">S.L</th>
-                            <th class="px-2 py-2 text-center">Date/Time</th>
+                            <th class="px-2 py-2 text-center">Create Date</th>
                             <th class="px-2 py-2 text-center">Categorey name</th>
                             <th class="px-2 py-2 text-center">Brand name</th>
                             <th class="px-2 py-2 text-center">Status</th>
@@ -52,7 +52,7 @@ sms | Categorey
                         {% for allcat in allcats %}
                         <tr>
                             <td class="px-2 py-1 text-center">{{forloop.counter}}</td>
-                            <td class="px-2 py-1 text-center">{{ allcat.date_created|date:"Y-m-d h:i A" }}</td>
+                            <td class="px-2 py-1 text-center">{{ allcat.publish_date|date:"Y-m-d h:i A" }}</td>
                             <td class="px-2 py-1 text-center">{{allcat.cat_name}}</td>
                             <td class="px-2 py-1 text-center">
                                 <p class="m-0 text-truncate">{{allcat.cat_brand}}</p>

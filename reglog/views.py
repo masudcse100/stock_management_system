@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
@@ -14,12 +13,12 @@ def signupView(request):
             if form.is_valid():
                 messages.success(request, 'Congratulations! You havbe become an Author!')
                 form.save()
-                return HttpResponseRedirect(reverse('account/login'))
+                return render(request,'reglog/login.html')
         else:
             form = SignUpForm()
         return render(request, 'reglog/signup.html', {'form': form})
     else:
-        return HttpResponseRedirect(reverse('index'))
+        return render(request,'smsApps/dashboard.html')
 
 
 def loginView(request):
@@ -33,17 +32,19 @@ def loginView(request):
                 if user is not None:
                     login(request, user)
                     messages.success(request, 'Login Successfully!')
-                    return HttpResponseRedirect(reverse('index'))
+                    return render(request,'smsApps/dashboard.html')
         else:
             form = LoginForm()
         return render(request, 'reglog/login.html',{'form': form})
     else:
-        return HttpResponseRedirect(reverse('index'))
+        return render(request,'smsApps/dashboard.html')
 
 
 @login_required
 def logoutView(request):
     logout(request)
     messages.success(request, 'Logout Successfully!')
-    return HttpResponseRedirect(reverse('reglog:login'))
+    return render(request,'home.html')
 
+# def logout_view(request):
+#     return HttpResponseRedirect(reverse('reglog:login'))

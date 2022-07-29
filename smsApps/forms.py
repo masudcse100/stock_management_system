@@ -23,6 +23,7 @@ class CatForm(forms.ModelForm):
     class Meta:
         model = Categorie
         fields = ['cat_name', 'cat_brand', 'active']
+        # fields = '__all__'
         labels = {'cat_name': 'Categorey name', 'cat_brand':'Brand' }
         widgets = {
             'cat_name':forms.TextInput(attrs={'class':'form-control'}),

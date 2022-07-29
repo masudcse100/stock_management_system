@@ -1,6 +1,6 @@
 from django.urls import path
 from reglog import views
-app_name = 'reglog'
+# app_name = 'reglog'
 urlpatterns = [
     path('login/', views.loginView, name='login'),
     path('registration/', views.signupView, name='signup'),

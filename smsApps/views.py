@@ -6,9 +6,13 @@ from django.urls import reverse_lazy, reverse
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+def index(request):
+    return HttpResponseRedirect(reverse('smsApps:index'))
+
 @login_required
 def index(request):
-	return render(request, 'sms/dashboard.html')
+	cat_count = Categorie.objects.all().count()
+	return render(request, 'sms/dashboard.html',{'cat_count':cat_count})
 
 @login_required
 def categoreyView(request):
@@ -34,3 +38,4 @@ def addCategorey(request):
         return render(request, 'sms/categoriesadd.html', {'form':form})
     else:
         return HttpResponseRedirect('/login/')
+
