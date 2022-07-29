@@ -12,12 +12,12 @@ def index(request):
 @login_required
 def index(request):
 	cat_count = Categorie.objects.all().count()
-	return render(request, 'sms/dashboard.html',{'cat_count':cat_count})
+	return render(request, 'smsApps/dashboard.html',{'cat_count':cat_count})
 
 @login_required
 def categoreyView(request):
 	allcatn = Categorie.objects.all()
-	return render(request, 'sms/categories.html',{'allcats':allcatn})
+	return render(request, 'smsApps/categories.html',{'allcats':allcatn})
 
 def addCategorey(request):
     if request.user.is_authenticated:
@@ -35,7 +35,7 @@ def addCategorey(request):
 				# return HttpResponseRedirect(reverse('index'))
         else:
             form = CatForm()
-        return render(request, 'sms/categoriesadd.html', {'form':form})
+        return render(request, 'smsApps/categoriesadd.html', {'form':form})
     else:
         return HttpResponseRedirect('/login/')
 

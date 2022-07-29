@@ -32,19 +32,21 @@ def loginView(request):
                 if user is not None:
                     login(request, user)
                     messages.success(request, 'Login Successfully!')
-                    return render(request,'smsApps/dashboard.html')
+                    # return render(request,'smsApps/dashboard.html')
+                    return HttpResponseRedirect('/dashboard/')
         else:
             form = LoginForm()
         return render(request, 'reglog/login.html',{'form': form})
     else:
-        return render(request,'smsApps/dashboard.html')
-
+        # return render(request,'smsApps/dashboard.html')
+        return HttpResponseRedirect('/dashboard/')
 
 @login_required
 def logoutView(request):
     logout(request)
     messages.success(request, 'Logout Successfully!')
-    return render(request,'home.html')
+    # return render(request,'home.html')
+    return HttpResponseRedirect('/')
 
 # def logout_view(request):
 #     return HttpResponseRedirect(reverse('reglog:login'))
