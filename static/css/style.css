@@ -14,3 +14,28 @@
 .navbar-dark .navbar-nav .nav-link {
     color: rgb(255 255 255) !important;
 }
+#transaction-area{
+	display: block;
+    text-align: center;
+    font-weight: 700;
+    color: aliceblue;
+}
+
+.submit-area{
+	/*display: block;*/
+	margin-top: 50px;
+	padding: 40px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 10px grey;
+}
+
+.categorey{
+	background: slateblue;
+}
+.product{
+	/*background: lightsalmon;*/
+	background: rgb(255, 105, 198);
+}
+.sales{
+	background: orange;
+}
