@@ -45,7 +45,8 @@ def loginView(request):
 def logoutView(request):
     logout(request)
     messages.success(request, 'Logout Successfully!')
-    return render(request,'home.html')
+    # return render(request,'home.html')
+    return HttpResponseRedirect('/')
 
 # def logout_view(request):
 #     return HttpResponseRedirect(reverse('reglog:login'))
