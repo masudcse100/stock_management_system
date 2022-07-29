@@ -5,36 +5,36 @@ Dashboard
 {% endblock titleblock %}
 {% block bodycontent %}
 <div class="col-md-4 offset-md-4"><br>
-		{% if messages %}
-            {% for message in messages %}
+	{% if messages %}
+        {% for message in messages %}
             <div class="alert {{ message.tags }} alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                	<span aria-hidden="true">&times;</span>
                 </button>
             {{ message }}
             </div>
-            {% endfor %}
-            {% endif %} 
-        </div>
+        {% endfor %}
+    {% endif %} 
+</div>
 <h2 class="text-center">Stock Management System</h2>
 <div id="transaction-area">
 	<div class="row">
 		<div class="col-md-4 ">
 			<div class="submit-area categorey">
-				<h4>Total Categorey</h4><hr><br><br><br>
-
+				<h4>Total Categorey</h4><hr><br>
+					<h2>12</h2>
 			</div>
 		</div>
 		<div class="col-md-4 ">
 			<div class="submit-area product">
-				<h4>Total Product</h4><hr><br><br><br>
-				
+				<h4>Total Product</h4><hr><br>
+				<h2>55</h2>
 			</div>
 		</div>
         <div class="col-md-4 ">
 			<div class="submit-area sales">
-				<h4>Total Sales</h4><hr><br><br><br>
-				
+				<h4>Total Sales</h4><hr><br>
+				<h2>75</h2>
 			</div>
 		</div>
 	</div>
