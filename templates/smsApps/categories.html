@@ -22,6 +22,7 @@ sms | Categorey
         <div class="card-header">
             <div class="d-flex w-100 align-items-center justify-content-between">
                 <h4 class="card-title fw-bold">Product Categories</h4>
+                <strong>Total categories : {{categories_count}}</strong>
                 <div class="tools">
                     <button type="button" class="btn btn-primary rounded-0 bg-gradient btn-sm" id='add_new' data-toggle="modal" data-target="#exampleModal" data-whatever="@fat"><i class="fa fa-plus"></i><a style="color:white; text-decoration:none;" href="{% url 'addcategorey' %}">Add New</a></button>
                 </div>
@@ -49,7 +50,9 @@ sms | Categorey
                         </tr>
                     </thead>
                     <tbody>
-                        {% for allcat in page_cat_obj %}
+                        {% comment %} {% for allcat in page_cat_obj %} {% endcomment %}
+                        {% comment %} {% for allcat in allcats %} {% endcomment %}
+                        {% for allcat in categories %}
                         <tr>
                             <td class="px-2 py-1 text-center">{{forloop.counter}}</td>
                             <td class="px-2 py-1 text-center">{{ allcat.publish_date|date:"Y-m-d h:i A" }}</td>
@@ -74,18 +77,43 @@ sms | Categorey
                         </tr>
                         {% endfor %}
                     </tbody>
-                </table>
-                <div>
+                </table><br>
+                {% comment %} {{categories}} <br> {% endcomment %}
+                {% comment %} <span class="offset-md-10 offset-sm-3">
+                    {% if categories.has_previous %}
+                        <a style="text-decoration:none;" href="?categories-page={{categories.previous_page_number}}">« Previous</a>
+                    {% endif %}
+                    <span>Page {{ categories.number }} of {{ categories.paginator.num_pages }}</span>
+                    
+                    {% if categories.has_next %}
+                        <a style="text-decoration:none;" href="?categories-page={{categories.next_page_number}}">Next »</a>
+                    {% endif %}
+                </span> {% endcomment %}
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                        {% if categories.has_previous %}
+                      <li class="page-item">
+                        <a class="page-link" href="?categories-page={{categories.previous_page_number}}">Previous</a>
+                      </li>{% endif %}
+                      <li class="pagenum"><a class="page-link">Page <span class="text-danger">{{ categories.number }}</span> of {{ categories.paginator.num_pages }}</a></li>
+                      {% if categories.has_next %}
+                      <li class="page-item">
+                        <a class="page-link" href="?categories-page={{categories.next_page_number}}">Next</a>
+                      </li>{% endif %}
+                    </ul>
+                  </nav>
+                {% comment %} <div>
                     <span>
                         {% if page_cat_obj.has_previous %}
-                            <a style="text-decoration:none;" href="?cat_page={{page_cat_obj.previous_page_number}}">Previous</a>
+                            <a style="text-decoration:none;" href="?Categories-page={{page_cat_obj.previous_page_number}}">« Previous page</a>
                         {% endif %}
                         <span>{{ page_cat_obj.number }}</span>
+                        
                         {% if page_cat_obj.has_next %}
-                            <a style="text-decoration:none;" href="?cat_page={{page_cat_obj.next_page_number}}">Next</a>
+                            <a style="text-decoration:none;" href="?Categories-page={{page_cat_obj.next_page_number}}">Next Page »</a>
                         {% endif %}
                     </span>
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>
     </div>

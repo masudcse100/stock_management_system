@@ -16,15 +16,22 @@ def index(request):
 	categories_count = Categorie.objects.all().count()
 	# product_count = Categorie.objects.all().count()
 	# cat_count = Categorie.objects.all().count()
-	return render(request, 'smsApps/dashboard.html',{'cat_count':categories_count})
+	return render(request, 'smsApps/dashboard.html',{'categories_count':categories_count})
 
 @login_required
 def categoreyView(request):
-    allcats = Categorie.objects.all().order_by('cat_name')
-    pagntr = Paginator(allcats, 5)
-    page_num = request.GET.get('cat_page')
-    page_obj = pagntr.get_page(page_num)
-    return render(request, 'smsApps/categories.html',{'page_cat_obj':page_obj})
+    # allcats = Categorie.objects.all().order_by('?') for random show
+    # allcats = Categorie.objects.all()
+    # pagntr = Paginator(allcats, 5)
+    categories_count = Categorie.objects.all().count()
+    p = Paginator(Categorie.objects.all(), 2)
+    # page = request.GET.get('Categories-page')
+    page = request.GET.get('categories-page')
+    # page_obj = p.get_page(page)
+    categories = p.get_page(page)
+    # return render(request, 'smsApps/categories.html',{'page_cat_obj':page_obj})
+    # return render(request, 'smsApps/categories.html',{'allcats':allcats,'categories':categories})
+    return render(request, 'smsApps/categories.html',{'categories':categories,'categories_count':categories_count})
 
 def addCategorey(request):
     if request.user.is_authenticated:

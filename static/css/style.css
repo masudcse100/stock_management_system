@@ -46,3 +46,9 @@
 #mtcat{
     margin-top: 10px;
 }
+.page-link:not(:disabled):not(.disabled) {
+    cursor: revert !important;
+}
+.pagenum a:hover{
+    background-color:rgb(255, 255, 255) !important;
+}
