@@ -20,12 +20,16 @@ class SignUpForm(UserCreationForm):
 
 
 class CatForm(forms.ModelForm):
+    status = forms.Select(choices=[('1','Active'),('2','Inactive')])
+    # status = forms.ChoiceField(choices=[('1','Active'),('2','Inactive')])
     class Meta:
         model = Categorie
-        fields = ['cat_name', 'cat_brand', 'active']
+        fields = ['cat_name', 'cat_brand', 'status']
         # fields = '__all__'
-        labels = {'cat_name': 'Categorey name', 'cat_brand':'Brand' }
+        labels = {'cat_name': 'Categorey name', 'cat_brand':'Brand', 'status':'Status' }
         widgets = {
             'cat_name':forms.TextInput(attrs={'class':'form-control'}),
             'cat_brand':forms.TextInput(attrs={'class':'form-control'}),
+            'status':forms.Select(attrs={'class':'form-control'}),
+            
         }
