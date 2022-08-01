@@ -16,8 +16,8 @@ sms | Categorey
         {% endfor %}
     {% endif %} 
 </div>
-<div class="col-md-4 offset-md-4" style="box-shadow: 5px 5px 10px grey; margin-top:3rem;">
-    <h3 class='text-dark my-2 text-center' id="mtcat">Add Categorey</h3><br>
+<div class="col-md-4 offset-md-4" style="box-shadow: 5px 5px 10px grey; margin-top:1rem;">
+    <h3 class='text-dark my-2 text-center' id="mtcat"><br>Add Categorey</h3><hr><br>
 <form action="" method="post" novalidate>
     {% csrf_token %}
             <!-- Error Message  -->
@@ -31,12 +31,10 @@ sms | Categorey
     <div class='form-group'>
         {{fm.label_tag}} {{fm}} <p class='text-danger'>{{fm.errors|striptags}}</p>
     </div>
-    {% endfor %} <br><br>
-    <input class='btn btn-block btn-warning' type="submit" value="Save"><br>
+    {% endfor %}
+    <input class='btn btn-block btn-success' type="submit" value="Add Categorey"><br>
 </form>
-
-
 </div>
-
+{% comment %} ####################################################################### {% endcomment %}
 
 {% endblock bodycontent %}

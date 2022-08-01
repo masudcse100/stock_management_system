@@ -49,7 +49,7 @@ sms | Categorey
                         </tr>
                     </thead>
                     <tbody>
-                        {% for allcat in allcats %}
+                        {% for allcat in page_cat_obj %}
                         <tr>
                             <td class="px-2 py-1 text-center">{{forloop.counter}}</td>
                             <td class="px-2 py-1 text-center">{{ allcat.publish_date|date:"Y-m-d h:i A" }}</td>
@@ -58,9 +58,10 @@ sms | Categorey
                                 <p class="m-0 text-truncate">{{allcat.cat_brand}}</p>
                             </td>
                             <td class="px-1 py-1 text-center text-center">
-                                {{allcat.active}}
-                                {% comment %} <span class="badge bg-primary bg-gradient rounded-pill px-2">Active</span> 
-                                <span class="badge bg-secondary bg-gradient rounded-pill px-2">Inactive</span> {% endcomment %}
+                                {% comment %} {{allcat.active}} {% endcomment %}
+                                {% if allcat.status == '1' %}
+                                <span class="badge text-light bg-primary bg-gradient rounded-pill px-2">Active</span> {% else %}
+                                <span class="badge text-light bg-secondary bg-gradient rounded-pill px-2">Inactive</span> {% endif %}
                             </td>
                             <td class="px-2 py-1 align-middle text-center">
                                 <a class="btn btn-outline-primary btn-sm edit-data" href="" data-id="" title="Edit">
@@ -74,6 +75,17 @@ sms | Categorey
                         {% endfor %}
                     </tbody>
                 </table>
+                <div>
+                    <span>
+                        {% if page_cat_obj.has_previous %}
+                            <a style="text-decoration:none;" href="?cat_page={{page_cat_obj.previous_page_number}}">Previous</a>
+                        {% endif %}
+                        <span>{{ page_cat_obj.number }}</span>
+                        {% if page_cat_obj.has_next %}
+                            <a style="text-decoration:none;" href="?cat_page={{page_cat_obj.next_page_number}}">Next</a>
+                        {% endif %}
+                    </span>
+                </div>
             </div>
         </div>
     </div>
